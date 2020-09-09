@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_0
 D:\code\MyStyletProject\App.xaml
-12014749855
+21213771276
 
-6-1658224464
+9-508870128
 1961048791816
-Pages\ShellView.xaml;
+Pages\Page1View.xaml;Pages\ShellView.xaml;
 
-True
+False
 
