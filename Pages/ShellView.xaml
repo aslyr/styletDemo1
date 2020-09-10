@@ -7,31 +7,96 @@
         xmlns:hc="https://handyorg.github.io/handycontrol" 
         xmlns:local="clr-namespace:Company.WpfApplication1.Pages"
         xmlns:src="clr-namespace:System.Collections.Generic;assembly=System.Runtime"
+        xmlns:annotations="clr-namespace:System.Windows.Annotations;assembly=PresentationFramework"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance local:ShellViewModel}"
         Title="Stylet Project" Height="450" Width="800"
        >
-    <Grid>
-        <Grid >
+    <Window.Resources>
+       
+    </Window.Resources>
+    <hc:ScrollViewer>
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" ></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="22*"></RowDefinition>
+            <RowDefinition Height="*" MinHeight="20"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="菜单">
+                <MenuItem Header="打开文件"></MenuItem>
+                <MenuItem Header="打开文件夹"></MenuItem>
+                <MenuItem Header="打开网络资源"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="文件">
+                <MenuItem Header="打开文件" Icon=""></MenuItem>
+                <MenuItem Header="打开文件夹"></MenuItem>
+                <MenuItem Header="打开网络资源"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="编辑"></MenuItem>
+            <MenuItem Header="关于" Command="{s:Action NewTab}"></MenuItem>
+        </Menu>
+        <ToolBarTray Grid.Row="1">
+            <ToolBar Band="0" BandIndex="0">
+                <Button>gaokai</Button>
+                <TextBox TextWrapping="Wrap" Text="hello"></TextBox>
+                <hc:DateTimePicker></hc:DateTimePicker>
+            </ToolBar>
+            <ToolBar Band="0" BandIndex="1">
+                <Button>gaokai</Button>
+                <TextBox TextWrapping="Wrap" Text="hello"></TextBox>
+                 
+            </ToolBar>
+            <ToolBar Band="1" BandIndex="1">
+                <Button>band1</Button>
+                <TextBox TextWrapping="Wrap" Text="hello"></TextBox>
+            </ToolBar>
+        </ToolBarTray>
+        <StatusBar Grid.Row="3">
+            <StatusBarItem>
+                <TextBlock>Downloading File</TextBlock>
+            </StatusBarItem>
+            
+            <Separator/>
+            <StatusBarItem>
+                <TextBlock>Online</TextBlock>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+               <Button>right</Button>
+            </StatusBarItem>
+        </StatusBar>
+        <Grid Grid.Row="2" >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" MinWidth="120"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="5"></ColumnDefinition>
                 <ColumnDefinition Width="4*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0">
-                <Button Content="新建" Command="{s:Action NewTab}"></Button>
-                <Button Content="查询" Command="{Binding Search}"></Button>
-                <hc:ButtonGroup Grid.Column="0" Orientation="Vertical">
-                    <RadioButton Content="RadioButton" IsChecked="True"/>
-                    <RadioButton Content="RadioButton"/>
-                    <RadioButton IsEnabled="False" Content="RadioButton"/>
-                    <RadioButton Content="RadioButton"/>
-                </hc:ButtonGroup>
+            <StackPanel Grid.Column="0" x:Name="leftPanel"  >
                 
+                <Expander Header="苹果"  BorderThickness="1,1,1,0" BorderBrush="{DynamicResource BorderBrush}">
+                   
+                    
+                </Expander>
+                <Expander Header="微软" BorderThickness="1,1,1,0" Background="Salmon">
+                   
+                    <StackPanel>
+                        <Button>1</Button>
+                        <Button>1</Button>
+                        <Button>1</Button>
+                        <Button>1</Button>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="腾讯" BorderThickness="1,1,1,0" BorderBrush="{DynamicResource BorderBrush}">
+                    <hc:BackgroundSwitchElement></hc:BackgroundSwitchElement>
+                </Expander>
+                
+
+
             </StackPanel>
 
                
-            <GridSplitter Grid.Column="1" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></GridSplitter>
+            <GridSplitter Grid.Column="1" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="{StaticResource ColorPickerRainbowBrush}"></GridSplitter>
             <Grid Grid.Column="2">
                 <Grid >
                     <Grid.ColumnDefinitions>
@@ -43,14 +108,22 @@
                         <Button Content="新建" Command="{s:Action NewTab}"></Button>
                         <Button Content="查询" Command="{Binding Search}"></Button>
                     </hc:ButtonGroup>
-                    <GridSplitter Grid.Column="1" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"></GridSplitter>
+                    <GridSplitter Grid.Column="1" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="LightSlateGray"></GridSplitter>
                     <Grid Grid.Column="2" >
-                        <hc:TabControl ShowCloseButton="True"  ItemsSource="{Binding Items}" >
+                        <hc:TabControl ShowCloseButton="True"  ItemsSource="{Binding Items}" SelectedIndex="0" >
+                           
                             <TabControl.ContentTemplate>
                                 <DataTemplate>
+                                   
                                     <ContentControl s:View.Model="{Binding}"  />
+                                    
                                 </DataTemplate>
                             </TabControl.ContentTemplate>
+                            <TabControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Foreground="Red"  Text="{Binding  DisplayName}"/>
+                                </DataTemplate>
+                            </TabControl.ItemTemplate>
 
                         </hc:TabControl>
                     </Grid>
@@ -59,6 +132,8 @@
         </Grid>
         
     </Grid>
+    </hc:ScrollViewer>
+    
    
     
 </Window>

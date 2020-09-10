@@ -23,8 +23,8 @@ namespace Company.WpfApplication1.Pages
         public ShellViewModel( IContainer container)
         {
             this.container = container;
-            Items.Add(container.Get<Page1ViewModel>());
-            Items.Add(container.Get<Page1ViewModel>());
+            Items.Add(new Page1ViewModel(Items.Count.ToString()));
+            Items.Add(new Page1ViewModel(Items.Count.ToString()));
             for (int i = 0; i < 30; i++)
             {
                 var s = new Stduent()
@@ -44,7 +44,9 @@ namespace Company.WpfApplication1.Pages
         }
         public void NewTab()
         {
-            Items.Add(container.Get<Page1ViewModel>());
+            var page = new Page1ViewModel(Items.Count.ToString());
+            Items.Add(page);
+            this.ActiveItem = page;
         }
     }
 }

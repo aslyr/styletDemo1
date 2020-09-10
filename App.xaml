@@ -11,6 +11,7 @@
             <s:ApplicationLoader.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml"/>
+     
             </s:ApplicationLoader.MergedDictionaries>
         </s:ApplicationLoader>
        
